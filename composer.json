@@ -23,9 +23,20 @@
     "autoload": {
         "psr-4": {
             "App\\": "app/",
+            "Admin\\": "app/Modules/Admin",
+            "User\\": "app/Modules/User",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "classmap": [
+            "database/seeders",
+            "app/Modules/Admin/database/seeds",
+            "database/factories"
+        ],
+        "files": [
+            "app/Helpers/path.php"
+        ]
+
     },
     "autoload-dev": {
         "psr-4": {
