@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'moduleName' => 'admins',
+    'moduleName' => 'admin-panel',
 ];

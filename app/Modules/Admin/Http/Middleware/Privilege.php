@@ -18,8 +18,7 @@ class Privilege
     {
         if (Auth::guard('admin')->check() && in_array(Auth::guard('admin')->user()->privileges, $privileges)) {
             return $next($request);
-        } 
-        else {
+        } else {
             switch ($privileges[0]) {
                 case 'manager';
                     return redirect()->route('managers.login');

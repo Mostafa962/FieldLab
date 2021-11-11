@@ -9,12 +9,9 @@ class AuthController extends Controller
 
     public function checkLogin()
     {
-        if (
-            auth('admin')->check() 
-            && auth('admin')->user()->privileges == 'super')
+        if (auth('admin')->check() && auth('admin')->user()->privileges == 'super')
             return redirect()->route('admins.home');
-        $MainTitle = 'Sign in as admin';
-        return view('Admin::_auth.login', compact('MainTitle'));
+        return view('Admin::_auth.login');
     }
 
     public function login()

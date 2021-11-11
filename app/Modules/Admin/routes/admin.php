@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 Route::group(['middleware' => 'web', 'as' => 'admins.'], function () {
     Route::get('login', 'AuthController@checkLogin')->name('login');
     Route::post('login', 'AuthController@login')->middleware('throttle:6,1');
