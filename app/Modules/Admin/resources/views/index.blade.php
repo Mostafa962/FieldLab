@@ -12,9 +12,11 @@
   <link rel="stylesheet" href="{{asset('admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
   <link rel="stylesheet" href="{{asset('admin/plugins/jqvmap/jqvmap.min.css')}}">
   <link rel="stylesheet" href="{{asset('admin/dist/css/adminlte.min.css')}}">
+  <link rel="stylesheet" href="{{asset('admin/dist/toastr/toastr.min.css')}}">
   <link rel="stylesheet" href="{{asset('admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
   <link rel="stylesheet" href="{{asset('admin/plugins/daterangepicker/daterangepicker.css')}}">
   <link rel="stylesheet" href="{{asset('admin/plugins/summernote/summernote-bs4.min.css')}}">
+  <link rel="stylesheet" href="{{asset('admin/plugins/toastr/toastr.min.css')}}">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -28,7 +30,7 @@
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
     </ul>
 
@@ -96,5 +98,16 @@
 <script src="{{asset('admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
 <script src="{{asset('admin/dist/js/adminlte.js')}}"></script>
 <script src="{{asset('admin/dist/js/pages/dashboard.js')}}"></script>
+<script src="{{asset('admin/plugins/toastr/toastr.min.js')}}"></script>
+@if(session()->has('success'))
+    <script type="text/javascript">
+        toastr.success("{{session('success')}}");
+    </script>
+@endif
+@if(session()->has('error'))
+    <script type="text/javascript">
+        toastr.error("{{session('error')}}");
+    </script>
+@endif
 </body>
 </html>

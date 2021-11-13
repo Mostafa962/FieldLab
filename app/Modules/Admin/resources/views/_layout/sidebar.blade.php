@@ -6,8 +6,8 @@
         <p>Dashboard</p>
       </a>
     </li>
-    <li class="nav-item">
-      <a href="#" class="nav-link">
+    <li class="nav-item @yield('admins-menu-open')">
+      <a href="#" class="nav-link @yield('admins-active')">
         <i class="nav-icon fas fa-users"></i>
         <p>
           Admins
@@ -16,13 +16,13 @@
       </a>
       <ul class="nav nav-treeview">
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="{{route('admins.admin.index')}}" class="nav-link @yield('admins-view-active')">
             <i class="fa fa-eye nav-icon"></i>
             <p>View</p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="{{route('admins.admin.create')}}" class="nav-link @yield('admins-create-active')">
             <i class="fa fa-plus nav-icon"></i>
             <p>Create</p>
           </a>

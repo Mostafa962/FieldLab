@@ -12,8 +12,9 @@ class Admin extends Authenticatable
     use Notifiable;
 
     protected $fillable = [
-        'name', 'email', 'phone', 'password', 'privileges', 'deleted_at'
+        'name', 'email', 'phone', 'password', 'privileges', 'deleted_at','created_by'
     ];
+    
     protected $table = 'admins';
 
     /**
@@ -25,8 +26,13 @@ class Admin extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function admin()
+    public function deletedBy()
     {
         return $this->belongsTo('Admin\Models\Admin', 'deleted_by');
+    }
+
+    public function createdBy()
+    {
+        return $this->belongsTo('Admin\Models\Admin', 'created_by');
     }
 }

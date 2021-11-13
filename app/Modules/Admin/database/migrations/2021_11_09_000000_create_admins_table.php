@@ -22,6 +22,8 @@ class CreateAdminsTable extends Migration
             $table->enum('privileges', ['super', 'manager']);
             $table->bigInteger('deleted_by')->unsigned()->nullable();
             $table->foreign('deleted_by')->references('id')->on('admins');
+            $table->bigInteger('created_by')->unsigned()->nullable();
+            $table->foreign('created_by')->references('id')->on('admins');
             $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();
