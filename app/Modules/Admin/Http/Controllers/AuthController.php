@@ -18,7 +18,7 @@ class AuthController extends Controller
     {
         if (auth()->guard('admin')->attempt(['email' => request('email'), 'password' => request('password'), 'privileges' => 'super'], request('rememberme') == 1 ? true : false))
             return redirect()->route('admins.home');
-        return redirect()->route('admins.login')->with(['error' => "Email and password doesn't match our records"]);
+        return redirect()->route('admins.login')->with(['error' => "Invalid Credentials."]);
     }
 
     public function logout()

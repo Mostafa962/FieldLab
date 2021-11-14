@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>Feild Lab | Admin | @yield('page-title')</title><
   <link rel='shortcut icon' type='image/x-icon' href="{{asset('admin/dist/img/AdminLTELogo.png')}}" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -61,7 +62,7 @@
           <img src="{{asset('admin/dist/img/avatar5.png')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Hello, {{auth('admin')->user()->name}}</a>
+          <a href="{{route('admins.admin.edit', auth('admin')->user()->id)}}" class="d-block">Hello, {{auth('admin')->user()->name}}</a>
         </div>
       </div>
 
@@ -97,6 +98,7 @@
 <script src="{{asset('admin/plugins/summernote/summernote-bs4.min.js')}}"></script>
 <script src="{{asset('admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
 <script src="{{asset('admin/dist/js/adminlte.js')}}"></script>
+<script src="{{asset('admin/dist/js/general.js')}}"></script>
 <script src="{{asset('admin/dist/js/pages/dashboard.js')}}"></script>
 <script src="{{asset('admin/plugins/toastr/toastr.min.js')}}"></script>
 @if(session()->has('success'))

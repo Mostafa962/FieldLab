@@ -1,7 +1,6 @@
 <?php
 
 namespace Admin\Http\Controllers;
-
 use App\Http\Controllers\Controller;
 
 class JsonResponse extends Controller
@@ -10,11 +9,11 @@ class JsonResponse extends Controller
     {
         return response()->json(
             [
-            'code' => $code, 
-            'message' => $message, 
+            'code'       => $code, 
+            'message'    => $message, 
             'validation' => $validations,
-            'item' => $item, 
-            'data' => $object
+            'item'       => $item, 
+            'data'       => $object
             ], $statusCode);
     }
 }

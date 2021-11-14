@@ -14,11 +14,10 @@ Route::group(['middleware' => 'web', 'as' => 'admins.'], function () {
         Route::resource('admin', 'AdminController');
         Route::prefix('admins')->group(function () {
             Route::as('admin.')->group(function () {
+                Route::post('reset/password', 'AdminController@resetPassword')->name('reset.password');
+                Route::post('trash', 'AdminController@trash')->name('trash');
                 Route::get('trashed', 'AdminController@trashed')->name('trashed');
                 Route::post('restore', 'AdminController@restore')->name('restore');
-                Route::post('reset/password', 'AdminController@resetPassword')->name('password.reset');
-                Route::post('trash', 'AdminController@trash')->name('trash');
-                Route::get('profile', 'AdminController@viewProfile')->name('profile');
             });
         });
 

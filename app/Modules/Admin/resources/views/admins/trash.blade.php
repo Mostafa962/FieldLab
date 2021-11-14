@@ -1,23 +1,22 @@
 @extends('Admin::index')
 @section('admins-menu-open', 'menu-open')
 @section('admins-active', 'active')
-@section('admins-view-active', 'active')
-@section('page-title', 'Admins | View')
+@section('admins-trash-active', 'active')
+@section('page-title', 'Admins | Trash')
 @section('content')
 @include('Admin::_modals.confirm_password')
-@include('Admin::_modals.reset_admin_password')
 <section class="content-header">
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>Admin View</h1>
+        <h1>Admin Trash</h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item">
             <a href="{{route('admins.home')}}">Home</a>
           </li>
-          <li class="breadcrumb-item active">Admin View</li>
+          <li class="breadcrumb-item active">Admin Trash</li>
         </ol>
       </div>
     </div>
@@ -37,15 +36,15 @@
           </div>
         </div>
         <div class="card-body">
-          <table id="admin-records" class="table table-bordered table-hover">
+          <table id="example2" class="table table-bordered table-hover">
             <thead>
               <tr>
                 <th>#</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Phone</th>
-                <th>Created By</th>
-                <th>Created at</th>
+                <th>Deleted By</th>
+                <th>Deleted at</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -56,35 +55,27 @@
                   <td>{{ $record->name }}</td>
                   <td>{{ $record->email }}</td>
                   <td>{{ $record->phone }}</td>
-                  <td>{{ $record->createdBy?$record->createdBy->name:"--"}}</td>
+                  <td>{{ $record->deletedBy?$record->deletedBy->name:"--"}}</td>
                   <td>{{ date('M d, Y', strtotime($record->created_at)) .'-'.date('h:i a', strtotime($record->created_at)) }}</td>
                   <td>
-                      <a 
-                        href="{{route('admins.admin.edit',$record->id)}}" 
-                        title="Edit" 
-                        class="btn btn-sm btn-primary">
-                        <i class="fa fa-edit" style="color: #fff"></i>
-                      </a>
-                      <a 
-                        class="btn btn-sm btn-primary"
-                        title="Reset Password"
+                        <a 
+                        class="btn btn-sm btn-primary" 
+                        title="Restore" 
                         data-toggle="modal" 
-                        data-target="#reset-admin-password-modal"
-                        onclick="injectModalData('{{$record->id}}', '{{route('admins.admin.reset.password')}}', 'reset-admin-password-form', 'POST')"
+                        data-target="#confirm-password-modal"
+                        onclick="injectModalData('{{$record->id}}', '{{route('admins.admin.restore')}}', 'confirm-password-form', 'POST')"
                         >
-                        <i class="fa fa-key" style="color: #fff"></i>
-                      </a>
-                      @if($record->id !==1)
+                          <i class="fa fa-undo" style="color: #fff"></i>
+                        </a>
                         <a 
                           class="btn btn-sm btn-danger" 
-                          title="Remove" 
+                          title="Destroy" 
                           data-toggle="modal" 
                           data-target="#confirm-password-modal"
-                          onclick="injectModalData('{{$record->id}}', '{{route('admins.admin.trash')}}', 'confirm-password-form', 'POST')"
+                          onclick="injectModalData('{{$record->id}}', '{{route('admins.admin.destroy', $record->id)}}', 'confirm-password-form', 'DELETE')"
                         >
                           <i class="fa fa-trash" style="color: #fff"></i>
                         </a> 
-                      @endif
                   </td>
                 </tr>
               @endforeach
@@ -110,7 +101,7 @@
 @push('script')
 <script>
   $(function () {
-    $('#admin-records').DataTable({
+    $('#example2').DataTable({
       "paging": true,
       "lengthChange": false,
       "searching": false,

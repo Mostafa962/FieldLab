@@ -1,10 +1,7 @@
 <?php
 
 namespace Admin\Http\Controllers;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Http\Request;
-use JsonResponse;
 use Admin\Actions\Admin\{
     StoreAction,
     UpdateAction,
@@ -24,7 +21,7 @@ use Admin\Models\{
     Admin
 };
 
-class AdminController extends Controller
+class AdminController extends JsonResponse
 {
     public function index()
     {
@@ -71,24 +68,26 @@ class AdminController extends Controller
     }
 
 
-    public function resetPassword(ResetPasswordRequest $request, RestPassAction $restPassAction)
+    public function resetPassword(ResetPasswordRequest $request, RestPasswordAction $restPassAction)
     {
         DB::beginTransaction();
         try {
             $restPassAction->execute($request);
             DB::commit();
-            return response()->json(['success' => 'Password was reset successfully.']);
+            return $this->response(200, 'Password was reset successfully.', 200, [], 0, []);
         } catch (\Exception $ex) {
             DB::rollBack();
-            return response()->json(['error' => 'Failed, Please try again later.'], 200);
+            return $this->response(500, 'Failed, Please try again later.', 200, [], 0, []);
         }
     }
 
-    public function trash(RemoveRequest $request,TrashAction $trashAction)
+    public function trash(RemoveRequest $request, TrashAction $trashAction)
     {
         DB::beginTransaction();
         try {
             $record =  $trashAction->execute($request);
+            if(!$record)
+                return $this->response(500, 'Failed, This admin is not found .', 200, [], 0, []);
             DB::commit();
             return $this->response(200, 'Admin data moved to trash successfully.', 200, [], $record, []);
         } catch (\Exception $ex) {
@@ -99,22 +98,21 @@ class AdminController extends Controller
 
     public function trashed()
     {
-        $records = Admin::with('deletedBy')->select(['id','name','phone','emial','created_at'])->onlyTrashed()->get();
+        $records = Admin::with('deletedBy')->select(['id','name','phone','email','created_at','deleted_at','deleted_by'])->onlyTrashed()->get();
         return view('Admin::admins.trash', compact('records'));
     }
 
     public function destroy(RemoveRequest $request, DestroyAction $destroyAction, $id)
     {
-
         DB::beginTransaction();
         try {
             if ($id === 1) 
                 return $this->response(500, 'Failed, You can not delete this admin.', 200, [], 0, []);
-                $record =  $restoreAction->execute($request);
-                if(!$record)
-                    return $this->response(500, 'Failed, This admin is not found .', 200, [], 0, []);
-                DB::commit();
-                return $this->response(200, 'Admin has been deleted successfully.', 200, [], $record, []);
+            $record =  $destroyAction->execute($request, $id);
+            if(!$record)
+                return $this->response(500, 'Failed, This admin is not found .', 200, [], 0, []);
+            DB::commit();
+            return $this->response(200, 'Admin has been deleted successfully.', 200, [], $record, []);
         } catch (\Exception $ex) {
             DB::rollBack();
             return $this->response(500, 'Failed, Please try again later.', 200, [], 0, []);

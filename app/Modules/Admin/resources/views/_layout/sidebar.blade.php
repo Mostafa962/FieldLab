@@ -1,7 +1,7 @@
 <nav class="mt-2">
   <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
     <li class="nav-item">
-      <a href="#" class="nav-link @yield('home-active')">
+      <a href="{{route('admins.home')}}" class="nav-link @yield('home-active')">
         <i class="nav-icon fas fa-tachometer-alt"></i>
         <p>Dashboard</p>
       </a>
@@ -25,6 +25,14 @@
           <a href="{{route('admins.admin.create')}}" class="nav-link @yield('admins-create-active')">
             <i class="fa fa-plus nav-icon"></i>
             <p>Create</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{route('admins.admin.trashed')}}" class="nav-link @yield('admins-trash-active')">
+            <i class="fa fa-trash nav-icon"></i>
+            <p>
+              Trash<span class="right badge badge-danger">{{$adminTrashesCount}}</span>
+            </p>
           </a>
         </li>
       </ul>

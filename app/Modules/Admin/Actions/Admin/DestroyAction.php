@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 
 class DestroyAction
 {
-    public function execute(Request $request)
+    public function execute(Request $request, $id)
     {
-        $record = Admin::where('id', $request->resource_id)->where('id', '!=', auth('admin')->user()->id)->find();
+        $record = Admin::withTrashed()->where('id', '!=', auth('admin')->user()->id)->find($id);
         if(!$record)
             return false;
         $record->forceDelete();
