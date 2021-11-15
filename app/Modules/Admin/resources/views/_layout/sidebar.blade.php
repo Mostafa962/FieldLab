@@ -37,8 +37,8 @@
         </li>
       </ul>
     </li>
-    <li class="nav-item">
-      <a href="#" class="nav-link">
+    <li class="nav-item @yield('categories-menu-open')">
+      <a href="#" class="nav-link @yield('categories-active')">
         <i class="nav-icon fas fa-th"></i>
         <p>
             Categories
@@ -47,15 +47,23 @@
       </a>
       <ul class="nav nav-treeview">
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="{{route('admins.category.index')}}" class="nav-link @yield('categories-view-active')">
             <i class="fa fa-eye nav-icon"></i>
             <p>View</p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="{{route('admins.category.create')}}" class="nav-link @yield('categories-create-active')">
             <i class="fa fa-plus nav-icon"></i>
             <p>Create</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{route('admins.category.trashed')}}" class="nav-link @yield('categories-trash-active')">
+            <i class="fa fa-trash nav-icon"></i>
+            <p>
+              Trash<span class="right badge badge-danger">{{$categoryTrashesCount}}</span>
+            </p>
           </a>
         </li>
       </ul>
