@@ -1,22 +1,22 @@
 @extends('Admin::index')
-@section('categories-menu-open', 'menu-open')
-@section('categories-active', 'active')
-@section('categories-trash-active', 'active')
-@section('page-title', 'Categories | Trash')
+@section('products-menu-open', 'menu-open')
+@section('products-active', 'active')
+@section('products-view-active', 'active')
+@section('page-title', 'Products | View')
 @section('content')
 @include('Admin::_modals.confirm_password')
 <section class="content-header">
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>Category Trash</h1>
+        <h1>Product View</h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item">
             <a href="{{route('admins.home')}}">Home</a>
           </li>
-          <li class="breadcrumb-item active">Category Trash</li>
+          <li class="breadcrumb-item active">Product View</li>
         </ol>
       </div>
     </div>
@@ -28,7 +28,7 @@
     <div class="col-md-12">
       <div class="card card-primary">
         <div class="card-header">
-          <h3 class="card-title">CATEGORIES</h3>
+          <h3 class="card-title">PRODUCTS</h3>
           <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
               <i class="fas fa-minus"></i>
@@ -36,14 +36,14 @@
           </div>
         </div>
         <div class="card-body">
-          <table id="category-records" class="table table-bordered table-hover">
+          <table id="product-records" class="table table-bordered table-hover">
             <thead>
               <tr>
                 <th>#</th>
                 <th>Name</th>
                 <th>Image</th>
-                <th>Deleted By</th>
-                <th>Deleted at</th>
+                <th>Created By</th>
+                <th>Created at</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -55,24 +55,21 @@
                   <td>
                     <img src="{{asset('storage/'. $record->image)}}" width="100" alt="image not found">
                   </td>
-                  <td>{{ $record->deletedBy?$record->deletedBy->name:"--"}}</td>
+                  <td>{{ $record->createdBy?$record->createdBy->name:"--"}}</td>
                   <td>{{ date('M d, Y', strtotime($record->created_at)) .'-'.date('h:i a', strtotime($record->created_at)) }}</td>
                   <td>
-                        <a 
-                        class="btn btn-sm btn-primary" 
-                        title="Restore" 
-                        data-toggle="modal" 
-                        data-target="#confirm-password-modal"
-                        onclick="injectModalData('{{$record->id}}', '{{route('admins.category.restore')}}', 'confirm-password-form', 'POST')"
-                        >
-                          <i class="fa fa-undo" style="color: #fff"></i>
-                        </a>
+                      <a 
+                        href="{{route('admins.product.edit',$record->id)}}" 
+                        title="Edit" 
+                        class="btn btn-sm btn-primary">
+                        <i class="fa fa-edit" style="color: #fff"></i>
+                      </a>
                         <a 
                           class="btn btn-sm btn-danger" 
-                          title="Destroy" 
+                          title="Remove" 
                           data-toggle="modal" 
                           data-target="#confirm-password-modal"
-                          onclick="injectModalData('{{$record->id}}', '{{route('admins.category.destroy', $record->id)}}', 'confirm-password-form', 'DELETE')"
+                          onclick="injectModalData('{{$record->id}}', '{{route('admins.product.trash')}}', 'confirm-password-form', 'POST')"
                         >
                           <i class="fa fa-trash" style="color: #fff"></i>
                         </a> 
@@ -100,7 +97,7 @@
 @push('script')
 <script>
   $(function () {
-    $('#category-records').DataTable({
+    $('#product-records').DataTable({
       "paging": true,
       "lengthChange": false,
       "searching": false,

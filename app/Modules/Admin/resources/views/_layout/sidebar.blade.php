@@ -68,25 +68,33 @@
         </li>
       </ul>
     </li>
-    <li class="nav-item">
-      <a href="#" class="nav-link">
+    <li class="nav-item @yield('products-menu-open')">
+      <a href="#" class="nav-link @yield('products-active')">
         <i class="nav-icon fab fa-product-hunt"></i>
         <p>
-          Products
+            Products
           <i class="right fas fa-angle-left"></i>
         </p>
       </a>
       <ul class="nav nav-treeview">
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="{{route('admins.product.index')}}" class="nav-link @yield('products-view-active')">
             <i class="fa fa-eye nav-icon"></i>
             <p>View</p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="{{route('admins.product.create')}}" class="nav-link @yield('products-create-active')">
             <i class="fa fa-plus nav-icon"></i>
             <p>Create</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{route('admins.product.trashed')}}" class="nav-link @yield('products-trash-active')">
+            <i class="fa fa-trash nav-icon"></i>
+            <p>
+              Trash<span class="right badge badge-danger">{{$productTrashesCount}}</span>
+            </p>
           </a>
         </li>
       </ul>
