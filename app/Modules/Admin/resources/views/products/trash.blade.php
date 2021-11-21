@@ -40,6 +40,7 @@
             <thead>
               <tr>
                 <th>#</th>
+                <th>Category</th>
                 <th>Name</th>
                 <th>Image</th>
                 <th>Deleted By</th>
@@ -51,6 +52,7 @@
               @foreach($records as $record)
                 <tr id="tableRecord-{{$record->id}}">
                   <td>{{$loop->index+1}}</td>
+                  <td>{{ $record->category?$record->category->name:"--"}}</td>
                   <td>{{ $record->name }}</td>
                   <td>
                     <img src="{{asset('storage/'. $record->image)}}" width="100" alt="image not found">
@@ -83,6 +85,7 @@
               <tfoot>
               <tr>
                 <th>#</th>
+                <th>Category</th>
                 <th>Name</th>
                 <th>Image</th>
                 <th>Created By</th>

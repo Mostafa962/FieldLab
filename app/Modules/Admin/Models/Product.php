@@ -7,6 +7,16 @@ class Product extends Model
 {
     use SoftDeletes;
 
+    public function deletedBy()
+    {
+        return $this->belongsTo('Admin\Models\Admin', 'deleted_by');
+    }
+
+    public function createdBy()
+    {
+        return $this->belongsTo('Admin\Models\Admin', 'created_by');
+    }
+    
     public function category()
     {
         return $this->belongsTo(Category::class);

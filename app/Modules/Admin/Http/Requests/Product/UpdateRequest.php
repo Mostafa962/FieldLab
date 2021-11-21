@@ -23,6 +23,7 @@ class UpdateRequest extends FormRequest
      */
     public function rules()
     {
+        $keys_size = request()->input('keys')?count(request()->input('keys')):0;
         return [
             'category'    => 'required|exists:categories,id',
             'name'        => 'required|string|regex:/^[\pL\s\-]+$/u|min:4|max:191',

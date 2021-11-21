@@ -3,6 +3,10 @@
 @section('products-active', 'active')
 @section('page-title', 'Products | Edit')
 @section('content')
+@push('style')
+<link rel="stylesheet" href="{{asset('admin/plugins/select2/css/select2.min.css')}}">
+<link rel="stylesheet" href="{{asset('admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
+@endpush
 <section class="content-header">
   <div class="container-fluid">
     <div class="row mb-2">
@@ -38,6 +42,30 @@
             @csrf
             @method('put')
             <div class="form-group">
+              <label for="inputCategory">Category 
+                <span style="color:red">*
+                </span>
+              </label>
+              <select 
+                name="category"
+                required
+                id="inputCategory"
+                class="form-control select2bs4"
+              >
+                @foreach($categories as $category)
+                  <option 
+                    value="{{$category->id}}"
+                    @if($category->id == old('category') or $category->id==$record->category_id) selected @endif
+                  >
+                      {{$category->name}}
+                  </option>
+                @endforeach
+              </select>
+              @error('category')
+                <span id="inputCategory-error" class="error invalid-feedback" style="display:block">{{ $message }}</span>
+              @enderror
+            </div>
+            <div class="form-group">
               <label for="inputName">Name 
                 <span style="color:red">*
                 </span>
@@ -58,13 +86,10 @@
             </div>
             <div class="form-group">
               <label for="inputImage">Image 
-                <span style="color:red">*
-                </span>
               </label>
               <input 
                     type="file" 
                     name="image" 
-                    required
                     id="inputImage" 
                     class="form-control"
                     >
@@ -72,7 +97,21 @@
                 <img src="{{asset('storage/'. $record->image)}}" width="100" alt="image not found">
               @endif
               @error('image')
-                <span id="inputName-error" class="error invalid-feedback" style="display:block">{{ $message }}</span>
+                <span id="inputImage-error" class="error invalid-feedback" style="display:block">{{ $message }}</span>
+              @enderror
+            </div>
+            <div class="form-group">
+              <label for="inputDescription">Description 
+                <span style="color:red">*</span>
+              </label>
+              <textarea 
+                name="description"
+                required
+                id="inputDescription"
+                class="form-control"
+              >{{old('description')?old('description'):$record->description}}</textarea>
+              @error('description')
+                <span id="inputDescription-error" class="error invalid-feedback" style="display:block">{{ $message }}</span>
               @enderror
             </div>
             <div class="row">
@@ -87,4 +126,13 @@
   </div>
 </section>
 <br>
+@push('script')
+<script src="{{asset('admin/plugins/select2/js/select2.full.min.js')}}"></script>
+<script>
+  $('#inputDescription').summernote();
+  $('.select2bs4').select2({
+      theme: 'bootstrap4'
+  })
+</script>
+@endpush
 @endsection

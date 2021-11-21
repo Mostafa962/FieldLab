@@ -24,11 +24,11 @@ class UpdateAction
             array_push($attributes,[$value=>$request->input('values')[$key]]);
         }
 
-        $record->category    = $request->input('category_id');
-        $record->name        = $request->input('name');
-        $record->image       = $path;
-        $record->description = $request->input('description');
-        $product->attributes = json_encode($attributes);
+        $record->category_id  = $request->input('category');
+        $record->name         = $request->input('name');
+        $record->image        = $path;
+        $record->description  = $request->input('description');
+        // $product->attributes = json_encode($attributes);
         $record->save();
     }
 }

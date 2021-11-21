@@ -40,6 +40,9 @@ Route::group(['middleware' => 'web', 'as' => 'admins.'], function () {
                 Route::post('trash', 'ProductController@trash')->name('trash');
                 Route::get('trashed', 'ProductController@trashed')->name('trashed');
                 Route::post('restore', 'ProductController@restore')->name('restore');
+                Route::post('toggle-featured', 'ProductController@toggleFeatured')->name('toggle.featured');
+                Route::get('images/{id}', 'ProductController@images')->name('images');
+                Route::get('specifications/{id}', 'ProductController@specifications')->name('specifications');
             });
         });
         /**

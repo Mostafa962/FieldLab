@@ -43,7 +43,7 @@ class AdminController extends JsonResponse
             return redirect()->route('admins.admin.index')->with('success','Data has been saved successfully.');
         } catch (\Exception $exception) {
             DB::rollback();
-            return redirect()->back()->with('error','Failed, Please try again later.')->withInputs();
+            return redirect()->back()->with('error','Failed, Please try again later.')->withInput();
         }
     }
 
@@ -63,7 +63,7 @@ class AdminController extends JsonResponse
             return redirect()->route('admins.admin.index')->with('success','Data has been saved successfully.');
         } catch (\Exception $exception) {
             DB::rollback();
-            return redirect()->back()->with('error','Failed, Please try again later.')->withInputs();
+            return redirect()->back()->with('error','Failed, Please try again later.')->withInput();
         }
     }
 

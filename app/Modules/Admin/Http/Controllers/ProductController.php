@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\DB;
 use Admin\Actions\Product\{
     StoreAction,
     UpdateAction,
+    ToggleFeaturedAction,
     TrashAction,
     RestoreAction,
     DestroyAction,
@@ -12,6 +13,7 @@ use Admin\Actions\Product\{
 use Admin\Http\Requests\Product\{
     StoreRequest,
     UpdateRequest,
+    ToggleFeaturedRequest,
     RemoveRequest,
 };
 
@@ -24,7 +26,7 @@ class ProductController extends JsonResponse
 {
     public function index()
     {
-        $records = Product::with(['createdBy','category'])->select(['id','category_id','name','image','created_at','created_by'])->get();
+        $records = Product::with(['createdBy','category'])->select(['id','category_id','name','image','created_at','created_by','featured'])->get();
         return view('Admin::products.index', compact('records'));
     }
 
@@ -43,7 +45,7 @@ class ProductController extends JsonResponse
             return redirect()->route('admins.product.index')->with('success','Data has been saved successfully.');
         } catch (\Exception $exception) {
             DB::rollback();
-            return redirect()->back()->with('error','Failed, Please try again later.')->withInputs();
+            return redirect()->back()->with('error','Failed, Please try again later.')->withInput();
         }
     }
 
@@ -64,10 +66,22 @@ class ProductController extends JsonResponse
             return redirect()->route('admins.product.index')->with('success','Data has been saved successfully.');
         } catch (\Exception $exception) {
             DB::rollback();
-            return redirect()->back()->with('error','Failed, Please try again later.')->withInputs();
+            return redirect()->back()->with('error','Failed, Please try again later.')->withInput();
         }
     }
 
+    public function toggleFeatured(ToggleFeaturedRequest $request, ToggleFeaturedAction $toggleFeaturedAction)
+    {
+        DB::beginTransaction();
+        try {
+            $toggleFeaturedAction->execute($request);
+            DB::commit();
+            return $this->response(200, 'Product featured has been toggled successfully.', 200, [], 0 , []);
+        } catch (\Exception $ex) {
+            DB::rollBack();
+            return $this->response(500, 'Failed, Please try again later.', 200, [], 0, []);
+        }
+    }
     public function trash(RemoveRequest $request, TrashAction $trashAction)
     {
         DB::beginTransaction();

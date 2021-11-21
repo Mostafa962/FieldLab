@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="{{asset('admin/plugins/daterangepicker/daterangepicker.css')}}">
   <link rel="stylesheet" href="{{asset('admin/plugins/summernote/summernote-bs4.min.css')}}">
   <link rel="stylesheet" href="{{asset('admin/plugins/toastr/toastr.min.css')}}">
+  @stack('style')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -111,5 +112,6 @@
         toastr.error("{{session('error')}}");
     </script>
 @endif
+@stack('script')
 </body>
 </html>

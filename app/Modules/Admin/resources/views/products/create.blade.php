@@ -4,6 +4,10 @@
 @section('products-create-active', 'active')
 @section('page-title', 'Products | Create')
 @section('content')
+@push('style')
+<link rel="stylesheet" href="{{asset('admin/plugins/select2/css/select2.min.css')}}">
+<link rel="stylesheet" href="{{asset('admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
+@endpush
 <section class="content-header">
   <div class="container-fluid">
     <div class="row mb-2">
@@ -38,6 +42,30 @@
           <form class="" method="post" action="{{route('admins.product.store')}}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
+              <label for="inputCategory">Category 
+                <span style="color:red">*
+                </span>
+              </label>
+              <select 
+                name="category"
+                required
+                id="inputCategory"
+                class="form-control select2bs4"
+              >
+                @foreach($categories as $category)
+                  <option 
+                    value="{{$category->id}}"
+                    @if($category->id == old('category'))selected @endif
+                  >
+                      {{$category->name}}
+                  </option>
+                @endforeach
+              </select>
+              @error('category')
+                <span id="inputCategory-error" class="error invalid-feedback" style="display:block">{{ $message }}</span>
+              @enderror
+            </div>
+            <div class="form-group">
               <label for="inputName">Name 
                 <span style="color:red">*
                 </span>
@@ -68,7 +96,21 @@
                     class="form-control"
                     >
               @error('image')
-              <span id="inputName-error" class="error invalid-feedback" style="display:block">{{ $message }}</span>
+              <span id="inputImage-error" class="error invalid-feedback" style="display:block">{{ $message }}</span>
+              @enderror
+            </div>
+            <div class="form-group">
+              <label for="inputDescription">Description 
+                <span style="color:red">*</span>
+              </label>
+              <textarea 
+                name="description"
+                required
+                id="inputDescription"
+                class="form-control"
+              >{{old('description')}}</textarea>
+              @error('description')
+                <span id="inputDescription-error" class="error invalid-feedback" style="display:block">{{ $message }}</span>
               @enderror
             </div>
             <div class="row">
@@ -83,4 +125,14 @@
   </div>
 </section>
 <br>
+
+@push('script')
+<script src="{{asset('admin/plugins/select2/js/select2.full.min.js')}}"></script>
+<script>
+  $('#inputDescription').summernote();
+  $('.select2bs4').select2({
+      theme: 'bootstrap4'
+  })
+</script>
+@endpush
 @endsection
