@@ -5,7 +5,8 @@ namespace Admin\Providers;
 use Admin\Models\{
     Admin,
     Category,
-    Product
+    Product,
+    Service,
 };
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\ServiceProvider;
@@ -34,6 +35,7 @@ class AdminServiceProvider extends ServiceProvider
                 'adminTrashesCount'    => Admin::onlyTrashed()->count(),
                 'categoryTrashesCount' => Category::onlyTrashed()->count(),
                 'productTrashesCount'  => Product::onlyTrashed()->count(),
+                'serviceTrashesCount'  => Service::onlyTrashed()->count(),
                 
             ]);
         });

@@ -99,26 +99,51 @@
         </li>
       </ul>
     </li>
-    <li class="nav-item">
-      <a href="#" class="nav-link">
+    <li class="nav-item @yield('services-menu-open')">
+      <a href="#" class="nav-link @yield('services-active')">
         <i class="nav-icon fa fa-wrench"></i>
-        <p>Services</p>
+        <p>
+          Services
+          <i class="right fas fa-angle-left"></i>
+        </p>
       </a>
+      <ul class="nav nav-treeview">
+        <li class="nav-item">
+          <a href="{{route('admins.service.index')}}" class="nav-link @yield('services-view-active')">
+            <i class="fa fa-eye nav-icon"></i>
+            <p>View</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{route('admins.service.create')}}" class="nav-link @yield('services-create-active')">
+            <i class="fa fa-plus nav-icon"></i>
+            <p>Create</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{route('admins.service.trashed')}}" class="nav-link @yield('services-trash-active')">
+            <i class="fa fa-trash nav-icon"></i>
+            <p>
+              Trash<span class="right badge badge-danger">{{$serviceTrashesCount}}</span>
+            </p>
+          </a>
+        </li>
+      </ul>
     </li>
     <li class="nav-item">
-      <a href="#" class="nav-link">
-        <i class="nav-icon fa fa-envelope"></i>
+      <a href="{{route('admins.troubleshooting.index')}}" class="nav-link @yield('troubleshooting-active')">
+        <i class="nav-icon fa fa-exclamation-triangle" aria-hidden="true"></i>
         <p>Troubleshooting</p>
       </a>
     </li>
     <li class="nav-item">
-      <a href="#" class="nav-link">
+      <a href="{{route('admins.contact.index')}}" class="nav-link @yield('contact-active')">
         <i class="nav-icon fa fa-envelope"></i>
         <p>Contact Messages</p>
       </a>
     </li>
     <li class="nav-item">
-      <a href="#" class="nav-link">
+      <a href="{{route('admins.settings.index')}}" class="nav-link @yield('settings-active')">
         <i class="nav-icon fa fa-cog"></i>
         <p>Website Settings</p>
       </a>
