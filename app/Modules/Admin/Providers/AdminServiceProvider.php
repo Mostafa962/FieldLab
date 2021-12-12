@@ -4,7 +4,9 @@ namespace Admin\Providers;
 
 use Admin\Models\{
     Admin,
-    Category
+    Category,
+    Product,
+    Service,
 };
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\ServiceProvider;
@@ -30,8 +32,11 @@ class AdminServiceProvider extends ServiceProvider
     {
         view()->composer('Admin::_layout.sidebar', function ($view) {
             $view->with([
-                'adminTrashesCount' => Admin::onlyTrashed()->count(),
+                'adminTrashesCount'    => Admin::onlyTrashed()->count(),
                 'categoryTrashesCount' => Category::onlyTrashed()->count(),
+                'productTrashesCount'  => Product::onlyTrashed()->count(),
+                'serviceTrashesCount'  => Service::onlyTrashed()->count(),
+                
             ]);
         });
 

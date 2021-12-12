@@ -1,6 +1,6 @@
 <?php
 
-namespace Admin\Http\Requests\Category;
+namespace Admin\Http\Requests\Service;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -24,7 +24,8 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|regex:/^[\pL\s\-]+$/u|min:4|max:191',
+            'title' => 'required|string|min:4|max:191',
+            'description' => 'nullable|string|min:2|max:99999',
             'image' =>'nullable|image|mimes:jpg,jpeg,png,gif,bmp',
         ];
     }

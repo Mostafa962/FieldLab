@@ -2,36 +2,38 @@
 
 namespace Admin\Http\Controllers;
 use Illuminate\Support\Facades\DB;
-use Admin\Actions\Admin\{
+use Admin\Actions\Product\{
     StoreAction,
     UpdateAction,
+    ToggleFeaturedAction,
     TrashAction,
-    RestPasswordAction,
     RestoreAction,
     DestroyAction,
 };
-use Admin\Http\Requests\Admin\{
+use Admin\Http\Requests\Product\{
     StoreRequest,
     UpdateRequest,
+    ToggleFeaturedRequest,
     RemoveRequest,
-    ResetPasswordRequest,
 };
 
 use Admin\Models\{
-    Admin
+    Product,
+    Category
 };
 
-class AdminController extends JsonResponse
+class ProductController extends JsonResponse
 {
     public function index()
     {
-        $records = Admin::with('createdBy')->select(['id','name','phone','email','created_at','created_by'])->get();
-        return view('Admin::admins.index', compact('records'));
+        $records = Product::with(['createdBy','category'])->select(['id','category_id','name','image','created_at','created_by','featured'])->get();
+        return view('Admin::products.index', compact('records'));
     }
 
     public function create()
     {
-        return view('Admin::admins.create');
+        $categories = Category::select(['id','name'])->get();
+        return view('Admin::products.create', compact('categories'));
     }
 
     public function store(StoreRequest $request, StoreAction $storeAction)
@@ -40,7 +42,7 @@ class AdminController extends JsonResponse
         try {
             $storeAction->execute($request);
             DB::commit();
-            return redirect()->route('admins.admin.index')->with('success','Data has been saved successfully.');
+            return redirect()->route('admins.product.index')->with('success','Data has been saved successfully.');
         } catch (\Exception $exception) {
             DB::rollback();
             return redirect()->back()->with('error','Failed, Please try again later.')->withInput();
@@ -49,8 +51,9 @@ class AdminController extends JsonResponse
 
     public function edit($id)
     {
-        $record = Admin::findOrFail($id);
-        return view('Admin::admins.edit', compact('record'));
+        $record     = Product::findOrFail($id);
+        $categories = Category::select(['id','name'])->get();
+        return view('Admin::products.edit', compact('record', 'categories'));
     }
 
     public function update(UpdateRequest $request, UpdateAction $updateAction, $id)
@@ -60,36 +63,34 @@ class AdminController extends JsonResponse
         try {
             $updateAction->execute($request, $id);
             DB::commit();
-            return redirect()->route('admins.admin.index')->with('success','Data has been saved successfully.');
+            return redirect()->route('admins.product.index')->with('success','Data has been saved successfully.');
         } catch (\Exception $exception) {
             DB::rollback();
             return redirect()->back()->with('error','Failed, Please try again later.')->withInput();
         }
     }
 
-
-    public function resetPassword(ResetPasswordRequest $request, RestPasswordAction $restPassAction)
+    public function toggleFeatured(ToggleFeaturedRequest $request, ToggleFeaturedAction $toggleFeaturedAction)
     {
         DB::beginTransaction();
         try {
-            $restPassAction->execute($request);
+            $toggleFeaturedAction->execute($request);
             DB::commit();
-            return $this->response(200, 'Password was reset successfully.', 200, [], 0, []);
+            return $this->response(200, 'Product featured has been toggled successfully.', 200, [], 0 , []);
         } catch (\Exception $ex) {
             DB::rollBack();
             return $this->response(500, 'Failed, Please try again later.', 200, [], 0, []);
         }
     }
-
     public function trash(RemoveRequest $request, TrashAction $trashAction)
     {
         DB::beginTransaction();
         try {
             $record =  $trashAction->execute($request);
             if(!$record)
-                return $this->response(500, 'Failed, This admin is not found .', 200, [], 0, []);
+                return $this->response(500, 'Failed, This product is not found .', 200, [], 0, []);
             DB::commit();
-            return $this->response(200, 'Admin data moved to trash successfully.', 200, [], $record, []);
+            return $this->response(200, 'Product data moved to trash successfully.', 200, [], $record, []);
         } catch (\Exception $ex) {
             DB::rollBack();
             return $this->response(500, 'Failed, Please try again later.', 200, [], 0, []);
@@ -98,21 +99,19 @@ class AdminController extends JsonResponse
 
     public function trashed()
     {
-        $records = Admin::with('deletedBy')->select(['id','name','phone','email','created_at','deleted_at','deleted_by'])->onlyTrashed()->get();
-        return view('Admin::admins.trash', compact('records'));
+        $records = Product::with(['deletedBy','category'])->select(['category_id','id','name','image','created_at','deleted_at','deleted_by'])->onlyTrashed()->get();
+        return view('Admin::products.trash', compact('records'));
     }
 
     public function destroy(RemoveRequest $request, DestroyAction $destroyAction, $id)
     {
         DB::beginTransaction();
         try {
-            if ($id === 1) 
-                return $this->response(500, 'Failed, You can not delete this admin.', 200, [], 0, []);
             $record =  $destroyAction->execute($request, $id);
             if(!$record)
-                return $this->response(500, 'Failed, This admin is not found .', 200, [], 0, []);
+                return $this->response(500, 'Failed, This product is not found .', 200, [], 0, []);
             DB::commit();
-            return $this->response(200, 'Admin has been deleted successfully.', 200, [], $record, []);
+            return $this->response(200, 'Product has been deleted successfully.', 200, [], $record, []);
         } catch (\Exception $ex) {
             DB::rollBack();
             return $this->response(500, 'Failed, Please try again later.', 200, [], 0, []);
@@ -125,7 +124,7 @@ class AdminController extends JsonResponse
         try {
             $record =  $restoreAction->execute($request);
             DB::commit();
-            return $this->response(200, 'Admin has been restored successfully.', 200, [], $record, []);
+            return $this->response(200, 'Product has been restored successfully.', 200, [], $record, []);
         } catch (\Exception $ex) {
             DB::rollBack();
             return $this->response(500, 'Failed, Please try again later.', 200, [], 0, []);

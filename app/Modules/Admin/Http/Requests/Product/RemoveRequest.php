@@ -1,10 +1,11 @@
 <?php
 
-namespace Admin\Http\Requests\Category;
+namespace Admin\Http\Requests\Product;
 
+use Admin\Rules\ConfirmAdminPassword;
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateRequest extends FormRequest
+class RemoveRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +25,8 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|regex:/^[\pL\s\-]+$/u|min:4|max:191',
-            'image' =>'nullable|image|mimes:jpg,jpeg,png,gif,bmp',
+            'admin_password' => ['required', new ConfirmAdminPassword()],
+            'resource_id'    => 'required|exists:products,id'
         ];
     }
 }

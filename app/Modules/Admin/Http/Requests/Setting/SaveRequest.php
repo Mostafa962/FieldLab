@@ -1,10 +1,10 @@
 <?php
 
-namespace Admin\Http\Requests\Category;
+namespace Admin\Http\Requests\Setting;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateRequest extends FormRequest
+class SaveRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,8 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|regex:/^[\pL\s\-]+$/u|min:4|max:191',
-            'image' =>'nullable|image|mimes:jpg,jpeg,png,gif,bmp',
+            'about_us_content' => 'nullable|string|min:2|max:99999',
+            'logo' =>'nullable|image|mimes:jpg,jpeg,png,gif,bmp',
         ];
     }
 }

@@ -3,7 +3,7 @@
 namespace Admin\Models;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Category extends Model
+class Service extends Model
 {
     use SoftDeletes;
     
@@ -15,10 +15,5 @@ class Category extends Model
     public function createdBy()
     {
         return $this->belongsTo('Admin\Models\Admin', 'created_by');
-    }
-
-    public function products()
-    {
-        return $this->hasMany(Product::class);
     }
 }

@@ -40,6 +40,9 @@ Route::group(['middleware' => 'web', 'as' => 'admins.'], function () {
                 Route::post('trash', 'ProductController@trash')->name('trash');
                 Route::get('trashed', 'ProductController@trashed')->name('trashed');
                 Route::post('restore', 'ProductController@restore')->name('restore');
+                Route::post('toggle-featured', 'ProductController@toggleFeatured')->name('toggle.featured');
+                Route::get('images/{id}', 'ProductController@images')->name('images');
+                Route::get('specifications/{id}', 'ProductController@specifications')->name('specifications');
             });
         });
         /**
@@ -54,6 +57,34 @@ Route::group(['middleware' => 'web', 'as' => 'admins.'], function () {
             });
         });
 
+        /**
+         * Troubleshooting Module Routes
+         */
+        Route::prefix('troubleshooting')->group(function () {
+            Route::as('troubleshooting.')->group(function () {
+                Route::get('/', 'TroubleshootingController')->name('index');
+            });
+        });
+        /**
+         * Contact Requests Module Routes
+         */
+        Route::prefix('contact')->group(function () {
+            Route::as('contact.')->group(function () {
+                Route::get('/', 'ContactController')->name('index');
+            });
+        });
+        /**
+         * Settings Module Routes
+         */
+        Route::prefix('settings')->group(function () {
+            Route::as('settings.')->group(function () {
+                Route::get('/', 'SettingController@index')->name('index');
+                Route::post('/save', 'SettingController@save')->name('save');
+            });
+        });
+        /**
+         * Logout..
+         */
         Route::get('logout', 'AuthController@logout')->name('logout');
     });
 });
