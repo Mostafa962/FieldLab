@@ -7,7 +7,7 @@ Route::namespace('User\Http\Controllers')->prefix('api')->middleware(['api', 'lo
         
     });
 
-    Route::middleware('auth:api')->group(function () {
-        Route::post('logout', 'AuthController@logout');
-    });
+    // Route::middleware('auth:api')->group(function () {
+    //     Route::post('logout', 'AuthController@logout');
+    // });
 });
