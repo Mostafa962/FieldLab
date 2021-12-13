@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>Feild Lab | Admin | @yield('page-title')</title>
-  <link rel='shortcut icon' type='image/x-icon' href="{{asset('admin/dist/img/AdminLTELogo.png')}}" />
+  <link rel="icon" type='image/x-icon'  href="{{asset('admin/dist/img/favicon.ico')}}" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <link rel="stylesheet" href="{{asset('admin/plugins/fontawesome-free/css/all.min.css')}}">
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css')}}">
@@ -23,11 +23,10 @@
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
   <!-- Preloader -->
-  <div class="preloader flex-column justify-content-center align-items-center">
+  <!-- <div class="preloader flex-column justify-content-center align-items-center">
     <img class="animation__shake" src="{{asset('admin/dist/img/AdminLTELogo.png')}}" alt="AdminLTELogo" height="60" width="60">
-  </div>
+  </div> -->
 
-  <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
@@ -45,9 +44,6 @@
       </li>
     </ul>
   </nav>
-  <!-- /.navbar -->
-
-  <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
@@ -74,14 +70,10 @@
     </div>
     <!-- /.sidebar -->
   </aside>
-
-  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
       @yield('content')
   </div>
-  <!-- /.content-wrapper -->
 </div>
-<!-- ./wrapper -->
 <script src="{{asset('admin/plugins/jquery/jquery.min.js')}}"></script>
 <script src="{{asset('admin/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
 <script>

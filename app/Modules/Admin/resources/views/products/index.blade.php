@@ -70,7 +70,7 @@
                         class="btn btn-sm btn-primary">
                         <i class="fa fa-edit" style="color: #fff"></i>
                       </a>
-                      <a 
+                      <!-- <a 
                         href="{{route('admins.product.images',$record->id)}}" 
                         title="Gallery" 
                         class="btn btn-sm btn-dark">
@@ -81,7 +81,7 @@
                         title="Specifications" 
                         class="btn btn-sm btn-info">
                         <i class="fas fa-ellipsis-h" style="color: #fff"></i>
-                      </a>
+                      </a> -->
                         <a 
                           class="btn btn-sm btn-danger" 
                           title="Remove" 
