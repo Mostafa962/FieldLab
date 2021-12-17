@@ -25,7 +25,8 @@ class UserServiceProvider extends ServiceProvider
     public function boot()
     {
         $moduleName = basename(dirname(__DIR__, 1));
-        $this->loadRoutesFrom(loadRoute('api', $moduleName));
+        $this->loadRoutesFrom(loadRoute('web', $moduleName));
+        // $this->loadRoutesFrom(loadRoute('api', $moduleName));
         $this->loadViewsFrom(loadViews($moduleName), $moduleName);
         $this->loadTranslationsFrom(loadTranslations($moduleName), $moduleName);
         $this->loadMigrationsFrom(loadMigrations($moduleName));
