@@ -27,29 +27,27 @@
     <div class="col-md-12">
       <div class="card card-primary">
         <div class="card-header">
-          <h3 class="card-title">LOGO</h3>
+          <h3 class="card-title">HOME PAGE</h3>
           <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
               <i class="fas fa-minus"></i>
             </button>
           </div>
         </div>
-        <div class="card-body">
-            <div class="form-group">
-              <input 
-                    type="file" 
-                    name="logo" 
-                    id="inputLogo" 
-                    class="form-control"
-              >
-              @if($record && $record->logo)
-                <img src="{{asset('storage/'. $record->logo)}}" width="100" alt="image not found">
-              @endif
-              @error('inputLogo')
-              <span id="inputLogo-error" class="error invalid-feedback" style="display:block">{{ $message }}</span>
-              @enderror
-            </div>
+          @include('Admin::settings.components.home')
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="card card-primary">
+        <div class="card-header">
+          <h3 class="card-title">CONTACT INFO</h3>
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+              <i class="fas fa-minus"></i>
+            </button>
+          </div>
         </div>
+        @include('Admin::settings.components.contact')
       </div>
     </div>
     <div class="col-md-12">
@@ -62,20 +60,7 @@
             </button>
           </div>
         </div>
-        <div class="card-body">
-            <div class="form-group">
-            <textarea 
-                name="about_us_content"
-                required
-                id="inputAbout_us_content"
-                class="form-control"
-              >{{old('about_us_content')?old('about_us_content'):($record?$record->about_us_page_content:"")}}</textarea>
-              @error('about_us_content')
-                <span id="inputAbout_us_content-error" class="error invalid-feedback" style="display:block">{{ $message }}</span>
-              @enderror
-            </div>
-
-        </div>
+        @include('Admin::settings.components.about')
       </div>
     </div>
   </div>
@@ -88,7 +73,11 @@
 <br>
 @push('script')
 <script>
-  $('#inputAbout_us_content').summernote();
+  $('#home_description').summernote();
+  $('#Inputabout_p1').summernote();
+  $('#Inputabout_p2').summernote();
+  $('#Inputabout_p3').summernote();
+  $('#Inputabout_p4').summernote();
 </script>
 @endpush
 @endsection

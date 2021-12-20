@@ -25,9 +25,9 @@
         <div class="block-5 mb-5">
             <h3 class="footer-heading mb-4">Contact Info</h3>
             <ul class="list-unstyled">
-            <li class="address">10 Fake St., Maadi, Cairo, Egypt</li>
-            <li class="phone"><a href="tel://02345678">+02345678</a></li>
-            <li class="email">contact@fieldlab.com</li>
+            <li class="address">{!! $web_settings ? $web_settings->address : ""!!}</li>
+            <li class="phone"><a href="tel://{!! $web_settings ? $web_settings->fax : ''!!}">{!! $web_settings ? $web_settings->fax : ""!!}</a></li>
+            <li class="email">{!! $web_settings ? $web_settings->email : ""!!}</li>
             </ul>
         </div>
         </div>

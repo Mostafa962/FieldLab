@@ -1041,24 +1041,29 @@ a {
   transform: rotate(-90deg) translateX(-100%) translateY(-70%); }
 
 .banner-wrap {
-  background: #74d12b;
-  border-radius: 4px; }
-  .banner-wrap a {
-    padding: 30px;
-    display: block;
-    text-align: center; }
-    .banner-wrap a h5 {
-      font-size: 2rem;
-      font-style: italic;
-      margin-bottom: 10px; }
-    .banner-wrap a h5, .banner-wrap a p {
-      color: #fff; }
-    .banner-wrap a p {
-      color: #fff;
-      font-size: 1.4rem; }
-      .banner-wrap a p strong {
+  
+  background:#3278cd!important ;
+  border-radius: 4px !important; }
+  /* .banner-wrap .h-100 {
+    background:#3278cd!important ;
+    color:#fff;
+  } */
+  .banner-wrap div {
+    padding: 30px !important;
+    display: block !important;
+    text-align: center !important; }
+    .banner-wrap div h5 {
+      font-size: 2rem !important;
+      font-style: italic !important;
+      margin-bottom: 10px !important; }
+    .banner-wrap div h5, .banner-wrap div  {
+      color: #fff !important; }
+    .banner-wrap div p {
+      color: #fff !important;
+      font-size: 1.4rem !important; }
+      .banner-wrap div p strong {
         font-size: .9rem;
-        display: block; }
+        display: block !important; }
 
 .banner-1 {
   background-size: cover;
