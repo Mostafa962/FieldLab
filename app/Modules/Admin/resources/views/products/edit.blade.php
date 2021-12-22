@@ -101,6 +101,35 @@
               @enderror
             </div>
             <div class="form-group">
+              <label for="inputPdf">PDF 
+              </label>
+              <input 
+                    type="file" 
+                    name="pdf" 
+                    id="inputPdf" 
+                    class="form-control"
+                    >
+              @if($record->pdf)
+                <a target="_blank" title="View the file" href="{{asset('storage/'. $record->pdf)}}"><i class="fa fa-file"></i></a>
+              @endif
+              @error('pdf')
+              <span id="inputPdf-error" class="error invalid-feedback" style="display:block">{{ $message }}</span>
+              @enderror
+            </div>
+            <div class="form-group">
+              <label for="inputQuotation">Quotation 
+              </label>
+              <textarea 
+                name="quotation"
+                required
+                id="inputQuotation"
+                class="form-control"
+              >{{old('quotation')?old('quotation'):$record->quotation}}</textarea>
+              @error('quotation')
+                <span id="inputquotation-error" class="error invalid-feedback" style="display:block">{{ $message }}</span>
+              @enderror
+            </div>
+            <div class="form-group">
               <label for="inputDescription">Description 
                 <span style="color:red">*</span>
               </label>

@@ -9,7 +9,7 @@ Route::group(['middleware' => 'web', 'as' => 'users.'], function () {
     
     Route::prefix('products')->group(function () {
             Route::get('/', 'ProductsController@index')->name('products');
-            Route::get('show/{id}/{name}', 'ProductsController@show')->name('show');
+            Route::get('show/{id}/{name}', 'ProductsController@show')->name('products.show');
     });
 
     Route::prefix('services')->group(function () {

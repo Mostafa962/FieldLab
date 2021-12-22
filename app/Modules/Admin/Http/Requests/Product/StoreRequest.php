@@ -28,6 +28,8 @@ class StoreRequest extends FormRequest
             'category'    => 'required|exists:categories,id',
             'name'        => 'required|string|regex:/^[\pL\s\-]+$/u|min:4|max:191',
             'image'       => 'nullable|image|mimes:jpg,jpeg,png,gif,bmp',
+            'pdf'         => 'nullable|mimes:pdf|max:10000',
+            'quotation'   => 'nullable|string|min:2|max:200',
             'description' => 'required|string|min:2|max:99999',
             'images'      => 'nullable|array',
             'images.*'    => 'nullable|image|mimes:jpg,jpeg,png,gif,bmp',

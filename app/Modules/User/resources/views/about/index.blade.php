@@ -13,7 +13,7 @@
     </div>
   </div>
 </div>
-<div class="site-section custom-border-bottom" data-aos="fade">
+<div class="site-section custom-border-bottom" data-aos="fade-right">
   <div class="container">
     <div class="row mb-5">
       <div class="col-md-6">
@@ -34,7 +34,7 @@
     </div>
   </div>
 </div>    
-<div class="site-section bg-light custom-border-bottom" data-aos="fade">
+<div class="site-section bg-light custom-border-bottom" data-aos="fade-left">
   <div class="container">
     <div class="row mb-5">
       <div class="col-md-6 order-md-2">
@@ -53,7 +53,7 @@
     </div>
   </div>
 </div>
-<div class="site-section custom-border-bottom" data-aos="fade">
+<div class="site-section custom-border-bottom" data-aos="fade-right">
   <div class="container">
     <div class="row mb-5">
       <div class="col-md-6">

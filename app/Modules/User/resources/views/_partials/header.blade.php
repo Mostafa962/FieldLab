@@ -4,7 +4,7 @@
         <div class="logo">
         <div class="site-logo">
             <a href="{{ route('users.home') }}">
-            <img src="{{ asset('user/images/logo.png') }}">
+            <img width="110" src="{{ asset('storage/'. $web_settings->logo) }}">
             </a>
         </div>
         </div>
@@ -15,22 +15,16 @@
             <li class="has-children">
                 <a href="#">Categories</a>
                 <ul class="dropdown">
-                <li class="has-children">
-                    <a href="{{ route('users.products') }}">Laboratory Instruments</a>
-                    <ul class="dropdown">
-                    <li><a href="single-product.html">Analytical Balance</a></li>
-                    <li><a href="single-product.html">Binocular Microscopy</a></li>
-                    <li><a href="single-product.html">Incubator</a></li>
-                    <li><a href="single-product.html">Vein Finder</a></li>
-                    </ul>
-                </li>
-                <li class="has-children">
-                    <a href="{{ route('users.products') }}">Health care</a>
-                    <ul class="dropdown">
-                    <li><a href="single-product.html">Electronic Insulin Pump</a></li>
-                    <li><a href="single-product.html">CGM</a></li>
-                    </ul>
-                </li>
+                @foreach($web_categories as $web_category)
+                    <li class="has-children">
+                        <a href="{{ route('users.products').'?c='.$web_category->id }}">{{ $web_category->name }}</a>
+                        <ul class="dropdown">
+                        @foreach($web_category->products as $web_product)
+                            <li><a href="{{route('users.products.show',['name'=>str_replace([' ','/'], '-',$web_product->name),'id'=>$web_product->id])}}">{{ $web_product->name }}</a></li>
+                        @endforeach
+                        </ul>
+                    </li>
+                @endforeach
                 </ul>
             </li>
             <li><a href="{{ route('users.products') }}">Products</a></li>

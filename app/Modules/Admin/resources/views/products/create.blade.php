@@ -100,6 +100,32 @@
               @enderror
             </div>
             <div class="form-group">
+              <label for="inputPdf">PDF 
+              </label>
+              <input 
+                    type="file" 
+                    name="pdf" 
+                    id="inputPdf" 
+                    class="form-control"
+                    >
+              @error('pdf')
+              <span id="inputPdf-error" class="error invalid-feedback" style="display:block">{{ $message }}</span>
+              @enderror
+            </div>
+            <div class="form-group">
+              <label for="inputQuotation">Quotation 
+              </label>
+              <textarea 
+                name="quotation"
+                required
+                id="inputQuotation"
+                class="form-control"
+              >{{old('quotation')}}</textarea>
+              @error('quotation')
+                <span id="inputquotation-error" class="error invalid-feedback" style="display:block">{{ $message }}</span>
+              @enderror
+            </div>
+            <div class="form-group">
               <label for="inputDescription">Description 
                 <span style="color:red">*</span>
               </label>
