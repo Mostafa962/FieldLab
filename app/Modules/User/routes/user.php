@@ -22,12 +22,12 @@ Route::group(['middleware' => 'web', 'as' => 'users.'], function () {
 
     Route::prefix('contact')->group(function () {
         Route::get('/', 'ContactUsController@index')->name('contact');
-        Route::post('/store', 'ContactUsController@store')->name('store');
+        Route::post('/store', 'ContactUsController@store')->name('contact.store');
     });
 
     Route::prefix('troubleshooting')->group(function () {
         Route::get('/', 'TroubleshootingController@index')->name('troubleshooting');
-        Route::post('/store', 'TroubleshootingController@store')->name('store');
+        Route::post('/store', 'TroubleshootingController@store')->name('troubleshooting.store');
     });
 
 });

@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="https://fonts.googleapis.com/css?family=Rubik:400,700|Crimson+Text:400,400i" rel="stylesheet">
   <link rel="icon" href="{{ asset('user/images/favicon.ico') }}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="{{ asset('user/fonts/icomoon/style.css') }}">
   <link rel="stylesheet" href="{{ asset('user/css/bootstrap.min.css') }}">
   <link rel="stylesheet" href="{{ asset('user/css/magnific-popup.css') }}">
@@ -14,6 +15,8 @@
   <link rel="stylesheet" href="{{ asset('user/css/owl.theme.default.min.css') }}">
   <link rel="stylesheet" href="{{ asset('user/css/aos.css') }}">
   <link rel="stylesheet" href="{{ asset('user/css/style.css') }}">
+  <link rel="stylesheet" href="{{asset('admin/plugins/toastr/toastr.min.css')}}">
+
   <style>
     .btn-primary{
       color: #fff;
@@ -34,5 +37,17 @@
   <script src="{{ asset('user/js/jquery.magnific-popup.min.js') }}"></script>
   <script src="{{ asset('user/js/aos.js') }}"></script>
   <script src="{{ asset('user/js/main.js') }}"></script>
+  <script src="{{asset('admin/plugins/toastr/toastr.min.js')}}"></script>
+  @if(session()->has('success'))
+      <script type="text/javascript">
+          toastr.success("{{session('success')}}");
+      </script>
+  @endif
+  @if(session()->has('error'))
+      <script type="text/javascript">
+          toastr.error("{{session('error')}}");
+      </script>
+  @endif
+@stack('script')
 </body>
 </html>

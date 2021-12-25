@@ -22,14 +22,30 @@
         </div>
 
         <div class="col-md-6 col-lg-3">
-        <div class="block-5 mb-5">
-            <h3 class="footer-heading mb-4">Contact Info</h3>
-            <ul class="list-unstyled">
-            <li class="address">{!! $web_settings ? $web_settings->address : ""!!}</li>
-            <li class="phone"><a href="tel://{!! $web_settings ? $web_settings->fax : ''!!}">{!! $web_settings ? $web_settings->fax : ""!!}</a></li>
-            <li class="email">{!! $web_settings ? $web_settings->email : ""!!}</li>
-            </ul>
-        </div>
+            <div class="block-5 mb-5" style="margin-bottom:0px !important;">
+                <h3 class="footer-heading mb-4">Contact Info</h3>
+                <ul class="list-unstyled">
+                <li class="address">{!! $web_settings ? $web_settings->address : ""!!}</li>
+                <li class="phone"><a href="tel://{!! $web_settings ? $web_settings->fax : ''!!}">{!! $web_settings ? $web_settings->fax : ""!!}</a></li>
+                <li class="email">{!! $web_settings ? $web_settings->email : ""!!}</li>
+                </ul>
+            </div>
+            <div class="block-5 mb-5">
+                @if($web_settings->linkedin)
+                <a href="{{ $web_settings->linkedin }}" title="follow us on linkedin" target="_blank" style="margin: 0 10px;font-size: 20px;"><i class="fa fa-linkedin"></i></a>
+                @endif
+                @if($web_settings->facebook)
+                <a href="{{ $web_settings->facebook }}" title="follow us on facebook" target="_blank" style="margin: 0 10px;font-size: 20px;"><i class="fa fa-facebook"></i></a>
+                @endif
+                @if($web_settings->twitter)
+                <a href="{{ $web_settings->twitter }}" title="follow us on twitter" target="_blank" style="margin: 0 10px;font-size: 20px;"><i class="fa fa-twitter"></i></a>
+                @endif
+                @if($web_settings->youtube)
+                <a href="{{ $web_settings->youtube }}" title="follow us on youtube" target="_blank" style="margin: 0 10px;font-size: 20px;"><i class="fa fa-youtube"></i></a>
+                @endif
+                @if($web_settings->instagram)
+                <a href="{{ $web_settings->instagram }}" title="follow us on instagram" target="_blank" style="margin: 0 10px;font-size: 20px;"><i class="fa fa-instagram"></i></a>
+                @endif
         </div>
     </div>
     </div>

@@ -29,7 +29,7 @@
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
           @foreach($categories as $cat)
-            <a class="dropdown-item" href="#">{{ $cat->name }}</a>
+            <a class="dropdown-item" href="{{ route('users.products').'?c='.$cat->id }}">{{ $cat->name }}</a>
           @endforeach
         </div>
       </div>
