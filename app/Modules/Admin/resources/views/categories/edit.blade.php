@@ -58,13 +58,10 @@
             </div>
             <div class="form-group">
               <label for="inputImage">Image 
-                <span style="color:red">*
-                </span>
               </label>
               <input 
                     type="file" 
                     name="image" 
-                    required
                     id="inputImage" 
                     class="form-control"
                     >

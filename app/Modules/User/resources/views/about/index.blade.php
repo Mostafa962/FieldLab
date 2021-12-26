@@ -19,7 +19,7 @@
       <div class="col-md-6">
         <div class="block-16">
           <figure>
-            <img src="{{asset('storage/'. $web_settings->about_img3)}}" alt="Image placeholder" class="img-fluid rounded">
+            <img src="{{asset('storage/'. $web_settings->about_img1)}}" alt="Image placeholder" class="img-fluid rounded">
             <a href="https://vimeo.com/channels/staffpicks/93951774" class="play-button popup-vimeo">
               <span class="icon-play"></span>
             </a>

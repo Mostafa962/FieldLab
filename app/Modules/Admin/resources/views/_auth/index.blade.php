@@ -15,7 +15,7 @@
 <div class="login-box">
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="#" class="h1"><b>Field</b>Lab</a>
+      <a href="{{ route('users.home') }}" class="h1"><b>Field</b>Lab</a>
     </div>
     <div class="card-body">
         @yield('content')

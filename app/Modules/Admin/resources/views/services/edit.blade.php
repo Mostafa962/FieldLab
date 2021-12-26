@@ -62,7 +62,6 @@
               <input 
                     type="file" 
                     name="image" 
-                    required
                     id="inputImage" 
                     class="form-control"
                     >

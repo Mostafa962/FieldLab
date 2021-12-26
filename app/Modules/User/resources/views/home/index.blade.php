@@ -1,7 +1,7 @@
 @extends('User::index')
 @section('page-title', 'Home')
 @section('content')
-<div class="site-blocks-cover" style='background-image: url("{{ asset('storage/'. $web_settings->about_cover ) }}");'>
+<div class="site-blocks-cover" style='background-image: url("{{ asset('storage/'. $web_settings->home_cover ) }}");'>
   <div class="container">
     <div class="row">
       <div class="col-lg-7 mx-auto order-lg-2 align-self-center">

@@ -43,11 +43,11 @@
         @enderror
     </div>
     <div class="form-group">
-        <lable for="home_description">Home Description</lable>
+        <lable for="home_description_text">Home Description</lable>
         <textarea 
         name="home_description"
         
-        id="home_description"
+        id="home_description_text"
         class="form-control"
         >{{old('home_description')?old('home_description'):($record?$record->home_description:"")}}</textarea>
         @error('home_description')
