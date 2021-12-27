@@ -36,7 +36,7 @@
           </div>
         </div>
         <div class="card-body">
-          <table id="service-records" class="table table-bordered table-hover">
+          <table id="service-records" class="table table-bordered table-hover table-responsive">
             <thead>
               <tr>
                 <th>#</th>

@@ -155,7 +155,9 @@
 @push('script')
 <script src="{{asset('admin/plugins/select2/js/select2.full.min.js')}}"></script>
 <script>
-  $('#inputDescription').summernote();
+  // $('#inputDescription').summernote();
+  CKEDITOR.replace( 'inputDescription'); 
+
   $('.select2bs4').select2({
       theme: 'bootstrap4'
   })

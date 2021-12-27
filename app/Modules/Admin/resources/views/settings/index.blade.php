@@ -74,10 +74,14 @@
 @push('script')
 <script>
   $('#home_description').summernote();
-  $('#Inputabout_p1').summernote();
-  $('#Inputabout_p2').summernote();
-  $('#Inputabout_p3').summernote();
-  $('#Inputabout_p4').summernote();
+  // $('#Inputabout_p1').summernote();
+  // $('#Inputabout_p2').summernote();
+  // $('#Inputabout_p3').summernote();
+  // $('#Inputabout_p4').summernote();
+  CKEDITOR.replace( 'Inputabout_p1');
+  CKEDITOR.replace( 'Inputabout_p2'); 
+  CKEDITOR.replace( 'Inputabout_p3'); 
+  CKEDITOR.replace( 'Inputabout_p4'); 
 </script>
 @endpush
 @endsection

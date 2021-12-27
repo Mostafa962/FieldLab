@@ -98,4 +98,31 @@
         <span id="about_img3-error" class="error invalid-feedback" style="display:block">{{ $message }}</span>
         @enderror
     </div>
+    <div class="form-group">
+        <lable for="Inputabout_p4">Forth Description</lable>
+        <textarea 
+        name="about_p4"
+        
+        id="Inputabout_p4"
+        class="form-control"
+        >{{old('about_p4')?old('about_p4'):($record?$record->about_p4:"")}}</textarea>
+        @error('about_p4')
+        <span id="about_p4-error" class="error invalid-feedback" style="display:block">{{ $message }}</span>
+        @enderror
+    </div>
+    <div class="form-group">
+        <lable for="about_img4">Forth Image</lable>
+        <input 
+            type="file" 
+            name="about_img4" 
+            id="about_img4" 
+            class="form-control"
+        >
+        @if($record && $record->about_img4)
+        <img src="{{asset('storage/'. $record->about_img4)}}" width="100" alt="image not found">
+        @endif
+        @error('about_img4')
+        <span id="about_img4-error" class="error invalid-feedback" style="display:block">{{ $message }}</span>
+        @enderror
+    </div>
 </div>

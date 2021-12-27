@@ -25,9 +25,10 @@
             <div class="block-5 mb-5" style="margin-bottom:0px !important;">
                 <h3 class="footer-heading mb-4">Contact Info</h3>
                 <ul class="list-unstyled">
-                <li class="address">{!! $web_settings ? $web_settings->address : ""!!}</li>
-                <li class="phone"><a href="tel://{!! $web_settings ? $web_settings->fax : ''!!}">{!! $web_settings ? $web_settings->fax : ""!!}</a></li>
-                <li class="email">{!! $web_settings ? $web_settings->email : ""!!}</li>
+                <li class="address" title="address">{!! $web_settings ? $web_settings->address : ""!!}</li>
+                <li class="phone"><a title="Fax" href="tel://{!! $web_settings ? $web_settings->fax : ''!!}">{!! $web_settings ? $web_settings->fax : ""!!}</a></li>
+                <li class="phone"><a title = "Phone Number" href="tel://{!! $web_settings ? $web_settings->phone : ''!!}">{!! $web_settings ? $web_settings->phone : ""!!}</a></li>
+                <li class="email" title="email">{!! $web_settings ? $web_settings->email : ""!!}</li>
                 </ul>
             </div>
             <div class="block-5 mb-5">

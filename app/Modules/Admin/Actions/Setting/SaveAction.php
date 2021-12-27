@@ -79,8 +79,9 @@ class SaveAction
             $record->home_description = $request->input('home_description');
             $record->address          = $request->input('address');
             $record->fax              = $request->input('fax');
+            $record->phone            = $request->input('phone');
             $record->email            = $request->input('email');
-            $record->facebook          = $request->input('facebook');
+            $record->facebook         = $request->input('facebook');
             $record->instagram        = $request->input('instagram');
             $record->twitter          = $request->input('twitter');
             $record->linkedin         = $request->input('linkedin');
@@ -104,6 +105,7 @@ class SaveAction
                 'home_description' => $request->input('home_description'),
                 'address'          => $request->input('address'),
                 'fax'              => $request->input('fax'),
+                'phone'            => $request->input('phone'),
                 'email'            => $request->input('email'),
                 'facebook'         => $request->input('facebook'),
                 'instagram'        => $request->input('instagram'),

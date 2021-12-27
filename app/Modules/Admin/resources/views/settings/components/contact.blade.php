@@ -26,6 +26,19 @@
         @enderror
     </div>
     <div class="form-group">
+        <lable for="inputPhone">Phone</lable>
+        <input 
+            type="text" 
+            name="phone" 
+            value ="{{old('phone') ? old('phone') : ($record ? $record->phone : '')}}"
+            id="inputPhone" 
+            class="form-control"
+        >
+        @error('phone')
+        <span id="phone-error" class="error invalid-feedback" style="display:block">{{ $message }}</span>
+        @enderror
+    </div>
+    <div class="form-group">
         <lable for="inputEmail">Email</lable>
         <input 
             type="email" 

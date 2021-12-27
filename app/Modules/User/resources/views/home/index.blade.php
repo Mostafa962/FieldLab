@@ -19,7 +19,7 @@
       <div class="col-md-12 col-lg-12 mb-12 mb-lg-0">
         <div class="banner-wrap h-100">
           <div class="h-100" style="text-align: left;padding: 30px; display: block;">
-            {!! $web_settings ? $web_settings->home_description : "" !!}
+            <p>{!! $web_settings ? $web_settings->home_description : "" !!}</p>
           </div>
         </div>
       </div>

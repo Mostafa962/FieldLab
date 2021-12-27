@@ -45,15 +45,11 @@
     </ul>
   </nav>
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
     <a href="{{route('users.home')}}" target="_blank" class="brand-link">
       <img src="{{asset('admin/dist/img/favicon.ico')}}" alt="FieldLab Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Feild Lab</span>
     </a>
-
-    <!-- Sidebar -->
     <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
           <img src="{{asset('admin/dist/img/avatar5.png')}}" class="img-circle elevation-2" alt="User Image">
@@ -62,13 +58,8 @@
           <a href="{{route('admins.admin.edit', auth('admin')->user()->id)}}" class="d-block">Hello, {{auth('admin')->user()->name}}</a>
         </div>
       </div>
-
-      <!-- SidebarSearch Form -->
-      <!-- Sidebar Menu -->
         @include('Admin::_layout.sidebar')
-      <!-- /.sidebar-menu -->
     </div>
-    <!-- /.sidebar -->
   </aside>
   <div class="content-wrapper">
       @yield('content')
@@ -94,6 +85,7 @@
 <script src="{{asset('admin/dist/js/general.js')}}"></script>
 <script src="{{asset('admin/dist/js/pages/dashboard.js')}}"></script>
 <script src="{{asset('admin/plugins/toastr/toastr.min.js')}}"></script>
+<script src="//cdn.ckeditor.com/4.17.1/standard/ckeditor.js"></script>
 @if(session()->has('success'))
     <script type="text/javascript">
         toastr.success("{{session('success')}}");
