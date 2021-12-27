@@ -18,7 +18,7 @@
     <div class="row align-items-stretch section-overlap" data-aos="fade-right" >
       <div class="col-md-12 col-lg-12 mb-12 mb-lg-0">
         <div class="banner-wrap h-100">
-          <div class="h-100" style="text-align: left;padding: 30px; display: block;">
+          <div class="h-100" style="text-align: left !important;padding: 30px; display: block;">
             <p>{!! $web_settings ? $web_settings->home_description : "" !!}</p>
           </div>
         </div>

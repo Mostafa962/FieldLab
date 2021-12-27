@@ -33,8 +33,8 @@
             </button>
           </div>
         </div>
-        <div class="card-body">
-          <table id="troubleshooting-records" class="table table-bordered table-hover table-responsive">
+        <div class="card-body table-responsive">
+          <table id="troubleshooting-records" class="table table-bordered table-hover ">
             <thead>
               <tr>
                 <th>#</th>
