@@ -14,6 +14,18 @@
         <span id="about_cover-error" class="error invalid-feedback" style="display:block">{{ $message }}</span>
         @enderror
     </div>
+    <div class="form-group">
+        <lable for="Inputabout_header">About Header</lable>
+        <textarea 
+        name="about_header"
+        
+        id="Inputabout_header"
+        class="form-control"
+        >{{old('about_header')?old('about_header'):($record?$record->about_header:"")}}</textarea>
+        @error('about_header')
+        <span id="about_header-error" class="error invalid-feedback" style="display:block">{{ $message }}</span>
+        @enderror
+    </div>
     <hr>
     <div class="form-group">
         <lable for="Inputabout_p1">First Description</lable>

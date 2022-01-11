@@ -7,7 +7,7 @@
       <div class="col-lg-7 mx-auto align-self-center">
         <div class=" text-center">
           <h1>About Us</h1>
-          <p>FieldLab is subsidiary company for our mother company Zone Technologies located at Cairo-Egypt and our sister Prime Zone Systems located at Casablanca Morocco specialized in supplying Medical and Lab solutions to the Egyptian Market.</p>ˀ
+          <p>{{ $web_settings->about_header }}</p>
         </div>
       </div>
     </div>

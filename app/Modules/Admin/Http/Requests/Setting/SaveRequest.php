@@ -37,6 +37,7 @@ class SaveRequest extends FormRequest
             'linkedin'         => 'nullable|url|min:2|max:191',
             'youtube'          => 'nullable|url|min:2|max:191',
             'about_cover'      => 'nullable|image|mimes:jpg,jpeg,png,gif,bmp',
+            'about_header'     => 'nullable|string|min:2|max:99999',
             'about_p1'         => 'nullable|string|min:2|max:99999',
             'about_p2'         => 'nullable|string|min:2|max:99999',
             'about_p3'         => 'nullable|string|min:2|max:99999',

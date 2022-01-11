@@ -87,6 +87,7 @@ class SaveAction
             $record->linkedin         = $request->input('linkedin');
             $record->youtube          = $request->input('youtube');
             $record->about_cover      = $about_cover;
+            $record->about_header     = $request->input('about_header');
             $record->about_p1         = $request->input('about_p1');
             $record->about_p2         = $request->input('about_p2');
             $record->about_p3         = $request->input('about_p3');
