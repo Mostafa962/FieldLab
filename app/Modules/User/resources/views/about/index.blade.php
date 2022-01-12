@@ -6,14 +6,13 @@
     <div class="row">
       <div class="col-lg-7 mx-auto align-self-center">
         <div class=" text-center">
-          <h1>About Us</h1>
           <p>{{ $web_settings->about_header }}</p>
         </div>
       </div>
     </div>
   </div>
 </div>
-<div class="site-section custom-border-bottom" data-aos="fade-right">
+<div class="site-section custom-border-bottom bg-light" data-aos="fade-right">
   <div class="container">
     <div class="row mb-5">
       <div class="col-md-6">
@@ -34,7 +33,7 @@
     </div>
   </div>
 </div>    
-<div class="site-section bg-light custom-border-bottom" data-aos="fade-left">
+<div class="site-section custom-border-bottom" data-aos="fade-left">
   <div class="container">
     <div class="row mb-5">
       <div class="col-md-6 order-md-2">
@@ -53,7 +52,7 @@
     </div>
   </div>
 </div>
-<div class="site-section custom-border-bottom" data-aos="fade-right">
+<div class="site-section custom-border-bottom bg-light" data-aos="fade-right">
   <div class="container">
     <div class="row mb-5">
       <div class="col-md-6">
@@ -74,7 +73,7 @@
     </div>
   </div>
 </div>
-<div class="site-section bg-light custom-border-bottom" data-aos="fade-left">
+<div class="site-section custom-border-bottom" data-aos="fade-left">
   <div class="container">
     <div class="row mb-5">
       <div class="col-md-6 order-md-2">

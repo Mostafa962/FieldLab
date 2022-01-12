@@ -111,13 +111,13 @@
       </div>
       <div class="col-lg-6">
         <div class="p-4 bg-white mb-3 rounded">
-          <iframe id="iframeid"
-                  width="450"
-                  height="250"
-                  style="border:0"
-                  src="https://www.google.com/maps/embed?api=1&origin=Space+Needle+Seattle+WA&destination=Pike+Place+Market+Seattle+WA&travelmode=bicycling"
-                  >
-          </iframe>
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13824.798737214065!2d31.282077!3d29.9736908!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd7b4c8315a153eee!2sZone%20Technologies!5e0!3m2!1sar!2seg!4v1642029772823!5m2!1sar!2seg"
+            width="500"
+            height="250"
+            style="border:0"
+            allowfullscreen="" 
+            loading="lazy"></iframe>
         </div>
       </div>
     </div>

@@ -29,7 +29,7 @@
             </li>
             <li><a href="{{ route('users.products') }}">Products</a></li>
             <li><a href="{{ route('users.services') }}">Services</a></li>
-            <li><a href="{{ route('users.about') }}">About</a></li>
+            <li><a href="{{ route('users.about') }}">About Us</a></li>
             <li><a href="{{ route('users.contact') }}">Contact</a></li>
             <li><a href="{{ route('users.troubleshooting') }}">Troubleshooting</a></li>
             </ul>
