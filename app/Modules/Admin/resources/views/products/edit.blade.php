@@ -158,11 +158,8 @@
 @push('script')
 <script src="{{asset('admin/plugins/select2/js/select2.full.min.js')}}"></script>
 <script>
-    CKEDITOR.replace('content', {
-          extraPlugins: 'uicolor,colorbutton,colordialog,font',
-    });
-  // $('#inputDescription').summernote();
-  CKEDITOR.replace( 'inputDescription'); 
+  $('#inputDescription').summernote();
+
   $('.select2bs4').select2({
       theme: 'bootstrap4'
   })
