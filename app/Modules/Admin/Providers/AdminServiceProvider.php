@@ -7,6 +7,7 @@ use Admin\Models\{
     Category,
     Product,
     Service,
+    Slider,
 };
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\ServiceProvider;
@@ -36,6 +37,7 @@ class AdminServiceProvider extends ServiceProvider
                 'categoryTrashesCount' => Category::onlyTrashed()->count(),
                 'productTrashesCount'  => Product::onlyTrashed()->count(),
                 'serviceTrashesCount'  => Service::onlyTrashed()->count(),
+                'sliderTrashesCount'  => Slider::onlyTrashed()->count(),
                 
             ]);
         });

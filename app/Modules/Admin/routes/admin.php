@@ -21,6 +21,17 @@ Route::group(['middleware' => 'web', 'as' => 'admins.'], function () {
             });
         });
         /**
+         * Silder Module Routes
+         */
+        Route::resource('slider', 'SliderController');
+        Route::prefix('sliders')->group(function () {
+            Route::as('slider.')->group(function () {
+                Route::post('trash', 'SliderController@trash')->name('trash');
+                Route::get('trashed', 'SliderController@trashed')->name('trashed');
+                Route::post('restore', 'SliderController@restore')->name('restore');
+            });
+        });
+        /**
          * Category Module Routes
          */
         Route::resource('category', 'CategoryController');

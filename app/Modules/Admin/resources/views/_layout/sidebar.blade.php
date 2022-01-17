@@ -37,6 +37,37 @@
         </li>
       </ul>
     </li>
+    <li class="nav-item @yield('sliders-menu-open')">
+      <a href="#" class="nav-link @yield('sliders-active')">
+        <i class="nav-icon fa fa-camera-retro"></i>
+        <p>
+          Sliders
+          <i class="right fas fa-angle-left"></i>
+        </p>
+      </a>
+      <ul class="nav nav-treeview">
+        <li class="nav-item">
+          <a href="{{route('admins.slider.index')}}" class="nav-link @yield('sliders-view-active')">
+            <i class="fa fa-eye nav-icon"></i>
+            <p>View</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{route('admins.slider.create')}}" class="nav-link @yield('sliders-create-active')">
+            <i class="fa fa-plus nav-icon"></i>
+            <p>Create</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{route('admins.slider.trashed')}}" class="nav-link @yield('sliders-trash-active')">
+            <i class="fa fa-trash nav-icon"></i>
+            <p>
+              Trash<span class="right badge badge-danger">{{$sliderTrashesCount}}</span>
+            </p>
+          </a>
+        </li>
+      </ul>
+    </li>
     <li class="nav-item @yield('categories-menu-open')">
       <a href="#" class="nav-link @yield('categories-active')">
         <i class="nav-icon fas fa-th"></i>

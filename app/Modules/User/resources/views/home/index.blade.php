@@ -1,13 +1,33 @@
 @extends('User::index')
 @section('page-title', 'Home')
 @section('content')
-<div class="site-blocks-cover" style='background-image: url("{{ asset('storage/'. $web_settings->home_cover ) }}");'>
+<div class="site-blocks-cover">
   <div class="container">
     <div class="row">
-      <div class="col-lg-7 mx-auto order-lg-2 align-self-center">
+    <div class="col-lg-7 mx-auto order-lg-2 align-self-center">
         <div class="site-block-cover-content text-center">
-          <h1>{!! $web_settings ? $web_settings->home_title : ""!!}
-          </h1>
+          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              @foreach($sliders as $slider)
+               <li data-target="#carouselExampleIndicators" data-slide-to="{{$slider->id}}" ></li>
+              @endforeach
+            </ol>
+            <div class="carousel-inner">
+              @foreach($sliders as $slider)
+              <div class="carousel-item active">
+              <img src="{{asset('storage/'. $slider->image)}}" class="d-block w-100" alt="{{$slider->title}}">
+              </div>
+              @endforeach
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -63,4 +83,11 @@
     </div>
   </div>
 </div>
+@push('script')
+<script>
+  $('.carousel').carousel({
+  interval: 2000
+})
+</script>
+@endpush
 @endsection
