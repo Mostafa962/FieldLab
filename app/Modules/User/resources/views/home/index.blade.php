@@ -1,38 +1,37 @@
 @extends('User::index')
 @section('page-title', 'Home')
 @section('content')
+@push('style')
+<style>
+  /* Make the image fully responsive */
+  .carousel-inner img {
+    width: 100%;
+    height: 100%;
+  }
+</style>
+@endpush
 <div class="site-blocks-cover">
-  <div class="container">
-    <div class="row">
-    <div class="col-lg-7 mx-auto order-lg-2 align-self-center">
-        <div class="site-block-cover-content text-center">
-          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-              @foreach($sliders as $slider)
-               <li data-target="#carouselExampleIndicators" data-slide-to="{{$slider->id}}" ></li>
-              @endforeach
-            </ol>
-            <div class="carousel-inner">
-              @foreach($sliders as $slider)
-              <div class="carousel-item active">
-              <img src="{{asset('storage/'. $slider->image)}}" class="d-block w-100" alt="{{$slider->title}}">
-              </div>
-              @endforeach
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
+    <div id="demo" class="carousel slide" data-ride="carousel" >
+        <ul class="carousel-indicators">
+          @foreach($sliders as $slider)
+          <li data-target="#demo" data-slide-to="{{$loop->index++}}" @if($loop->index == 0) class="active" @endif></li>
+          @endforeach
+        </ul>
+        <div class="carousel-inner">
+          @foreach($sliders as $slider)
+          <div class="carousel-item  {{ $loop->index == 0 ? 'active' : '' }}">
+            <img src="{{asset('storage/'. $slider->image)}}" alt="{{$slider->title}}" >
           </div>
+          @endforeach
         </div>
-      </div>
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </a>
+        </div>
     </div>
-  </div>
-</div>
 <div class="site-section">
   <div class="container">
     <div class="row align-items-stretch section-overlap" data-aos="fade-right" >
